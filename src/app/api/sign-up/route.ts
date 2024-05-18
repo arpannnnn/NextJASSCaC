@@ -11,7 +11,7 @@ export async function POST(request: Request) {
         const existingUserVerifiedByUsername = await
             UserModel.findOne({
                 username,
-                isVerrified: true
+                isVerified: true
             })
         if (existingUserVerifiedByUsername) {
             return Response.json({
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
         const verifyCode = Math.floor(1000 + Math.random()
             * 900000).toString()
         if (existingUserBYEmail) {
-            if (existingUserBYEmail.isVerrified) {
+            if (existingUserBYEmail.isVerified) {
                 return Response.json({
                     success: false,
                     message: "User already exist with this email"
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
                 password: hasedPassword,
                 verifyCode,
                 verifyCodeExpiry: expiryDate,
-                isVerrified: false,
+                isVerified: false,
                 isAcceptingMessage: true,
                 message: []
 
@@ -88,7 +88,7 @@ export async function POST(request: Request) {
                 message: "error registering user"
             },
             {
-                status: 900
+                status: 300
             }
         )
     }
