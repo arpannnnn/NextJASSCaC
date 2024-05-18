@@ -18,8 +18,8 @@ export async function sendVerificationEmail(
             react:VerificationEmail({username,otp:verifyCode
 
             }),
-          });
-          return{success:false,message:"failed to send verification email"}
+            });
+            return{success:true,message:"failed to send verification email"}
     }
     catch (emailError){
         console.error("Error sending verification email",
